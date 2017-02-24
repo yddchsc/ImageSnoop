@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加~</title>
+	<!--<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0"> -->
+	<meta http-equiv="X-UA-Compatible" content="edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<link rel="stylesheet" type="text/css" href="./static/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/normalize.css" />
+	<link rel='stylesheet prefetch' href='http://www.jq22.com/jquery/font-awesome.4.6.0.css'>
+	<link rel='stylesheet prefetch' href='./static/css/animate.min.css'>
+	<link rel="stylesheet" type="text/css" href="./static/css/default.css">
+	<link rel="stylesheet" type="text/css" href="./static/css/menustyles.css">
+</head>
+<body>
+	<div id="content" style="width:100%;padding:0 20px 0 20px">
+		<p class="text-center" style="margin:20px auto"></p>
+		<p class="text-center" style="margin:20px auto">写完一条后，继续写下一条之前要记得加“##”哦~</p>
+		<form role="form" action="/add.html" method="POST">
+			<div class="form-group">
+    			<select class="form-control">
+      				<option>特等奖</option>
+      				<option>一等奖</option>
+      				<option>二等奖</option>
+      				<option>三等奖</option>
+      				<option>安慰奖</option>
+    			</select>
+ 		 	</div>
+		</form>
+		<textarea style="height:300px">快来添加吧~~</textarea>
+	</div>
+	<div class="htmleaf-container">
+		
+		<div id='ss_menu'>
+		  <div class="firstButton">
+		    <i class="fa fa-home"></i>
+		  </div>
+		  <div class="secondButton">
+		    <i class="fa fa-edit"></i>
+		  </div>
+		  <div class="thirdButton">
+		    <i class="fa fa-envelope"></i>
+		  </div>
+		  <div class="forthButton">
+		    <i class="fa fa-heart"></i>
+		  </div>
+		  <div class='menu'>
+		    <div class='share' id='ss_toggle' data-rot='180'>
+		      <div class='circle'></div>
+		      <div class='bar'></div>
+		    </div>
+		  </div>
+		</div>
+		
+	</div>
+</body>
+
+<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="./static/js/jquery-2.1.1.min.js"><\/script>')</script>
+<script>
+	$(document).ready(function (ev) {
+	    var toggle = $('#ss_toggle');
+	    var menu = $('#ss_menu');
+	    var rot;
+	    $('#ss_toggle').on('click', function (ev) {
+	        rot = parseInt($(this).data('rot')) - 180;
+	        menu.css('transform', 'rotate(' + rot + 'deg)');
+	        menu.css('webkitTransform', 'rotate(' + rot + 'deg)');
+	        if (rot / 180 % 2 == 0) {
+	            toggle.parent().addClass('ss_active');
+	            toggle.addClass('close');
+	        } else {
+	            toggle.parent().removeClass('ss_active');
+	            toggle.removeClass('close');
+	        }
+	        $(this).data('rot', rot);
+	    });
+	    menu.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+	        if (rot / 180 % 2 == 0) {
+	            $('#ss_menu div i').addClass('ss_animate');
+	        } else {
+	            $('#ss_menu div i').removeClass('ss_animate');
+	        }
+	    });
+	    $('#ss_menu .firstButton i').on('click', function (ev) {
+	        location.href = "/";
+	    });
+	    $('#ss_menu .secondButton i').on('click', function (ev) {
+	        location.href = "/";
+	    });
+	    $('#ss_menu .thirdButton i').on('click', function (ev) {
+	        location.href = "/";
+	    });
+	    $('#ss_menu .forthButton i').on('click', function (ev) {
+	        location.href = "/";
+	    });
+	});
+</script>
+<script src="http://cdn.bootcss.com/tinymce/4.4.3/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+</html>
